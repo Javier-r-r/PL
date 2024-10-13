@@ -1,0 +1,53 @@
+Prácticas Procesamiento de Lenguajes:
+
+Fichero.l -> FLEX -> lex.yy.c -> gcc -> a.out
+
+a|b={a,b} -> buscamos el elemento a o el elemento b
+ab={ab} -> buscamos el elemento a seguido del elemento b
+a*={epsilon,a,aa,aaa} -> buscamos el elemento a o nada
+a+={a,aa,aaa,...} -> buscamos mínimo un elemento a
+ab?={a,ab} -> el elemento al lado de la interrogación puede aparecer o no, y si aparece es solo una vez
+[aeiou]={a,e,i,o,u} -> encaja con las vocales (solo un elemento)
+[A-Z] -> encaja con letras mayúsculas entre la A y la Z (solo un elemento) 
+[a-z] -> encaja con letras mayúsculas entre la a y la z (solo un elemento)
+[A-Za-z]=[a-Z] -> encaja letras mayúsculas y minúsculas (solo un elemento)
+0|1|2|3|4=[0-4] -> dos formas iguales de hacerlo
+. -> encaja con cualquier elemento (solo un elemento)
+a$ -> buscamos el elemento a al final de la línea
+^a -> buscamos el elemento a al principio de la línea
+[^a-z] -> buscamos cualquier elemento que no sea una letra minúscula
+a{3}={aaa} -> buscamos 3 elementos a seguidos
+a{n,m} -> buscamos mínimo n elementos a seguidos y máximo m elementos a seguidos (se puede dejar sin poner el límite máximo)
+[ ]=\ =" " -> buscamos el espacio en blanco
+((expr1)(expr2)) -> agrupar bloques de expresiones
+yytext -> variable de tipo cadena que contiene el valor del último elemento reconocido
+
+Sección declaraciones
+%{
+  Código en C -> se puede usar en las 2 últimas secciones
+%}											
+Declaraciones para simplificar las expresiones regulares						
+nombre(etiqueta) valor(expresión regular) -> se puede usar en las 2 primeras secciones							
+%% (Separadores)											
+Sec reglas (no hace falta ordenarlas pero es recomendable, de lo más específico a lo más genérico) (si encaja lo máximo posible en más de una regla ejecuta la primera)
+(Si hay un elemento que no coincida con ninguna regla por defecto lo imprime en la salida del programa)
+expr{/*acción*/(código en c)}
+%%
+Sec código (puede no existir) (el fichero lex.yy.c no lo toca)
+Se usa para escribir funciones, el main….
+Siempre tiene que tener la función para iniciar el análisis léxico
+
+Ejemplo suma con números:
+%{
+int suma=0;
+%}
+DIGITO [0-9]
+%%
+{DIGITO}+ {suma+=atoi(yytext);}
+. {printf("Carácter no válido\n");return -1;}
+%%
+int main (argc -> fichero al que apunta, argv) {
+yylex(); -> inicia el análisis léxico
+printf("El valor %d es: \n", suma);
+return 0;
+}

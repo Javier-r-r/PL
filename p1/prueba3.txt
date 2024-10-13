@@ -1,0 +1,8 @@
+Pal@braC0nSímbolos es válida?
+123abc no debería contarse como numérica.
+!!!secuencia-de-símbolos!!! cuenta como palabra.
+Palabra... con puntos...
+Otra_frase; con_delimitadores_extranos.
+123456789 es numérica.
+... . . múltiples puntos no forman una frase.
+¿Y qué hay de las palabras con signos de interrogación?

@@ -1,0 +1,20 @@
+Javier Rodríguez Rodríguez
+
+Lo primero fue definir los diferentes contadores que se usarán para saber la información solicitada.
+Después se definieron las distintas reglas que aumentan los contadores.
+Por último está el código en el que si se le pasa un archivo como parámetro (con la opción make run1), lee el archivo 
+y aplica el analizador sobre él. En caso de no pasar un archivo como parámetro (con la opción make run), inicia el
+analizador interactivo.
+
+Se adjunta un archivo Makefile con el cual se pueden ejecutar las distintas pruebas.
+Las distintas opciones del Makefile son:
+ - make compile:
+  · Compila el analizador
+ - make clean:
+  · Borra los ficheros que se crean con el anterior make
+ - make run:
+  · Inicia el analizador interactivo
+ - make run1:
+  · Pasa el analizador sobre el archivo prueba1.txt
+ - make run2:
+  · Pasa el analizador sobre el archivo prueba2.txt
