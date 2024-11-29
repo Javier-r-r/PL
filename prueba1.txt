@@ -1,0 +1,15 @@
+puntos_maximos = 100;
+valor_cierre = 7;
+
+jugador1;
+jugador2;
+
+12 oros;
+3 copas;
+7 espadas;
+
+jugador1 robar mazo;
+jugador1 descartar 7 espadas;
+
+jugador2 robar mazo;
+jugador2 descartar 3 copas;
