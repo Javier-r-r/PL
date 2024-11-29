@@ -1,5 +1,0 @@
-Esta es una prueba.
-Contiene VARIAS palabras en MAYÚSCULA.
-Algunas en minúsculas.
-12345,654 es una palabra numérica.
-Esta es una única palabra uhqfuo;qiugf
